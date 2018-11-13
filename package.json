@@ -1,5 +1,5 @@
 {
-  "name": "Hing Tang",
+  "name": "kittyhawk",
   "version": "1.0.0",
   "description": "Kitty Hawk",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "",
+  "author": "Hing Tang",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.2.1",
@@ -20,11 +20,14 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "apollo-boost": "^0.1.20",
+    "apollo-client": "^2.4.5",
     "babel-preset-stage-1": "^6.1.18",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
     "lodash": "^3.10.1",
     "react": "16.3.2",
-    "react-dom": "16.3.2",
-    "react-redux": "5.0.7",
-    "redux": "4.0.0"
+    "react-apollo": "^2.2.4",
+    "react-dom": "16.3.2"
   }
 }

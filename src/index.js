@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { ApolloClient } from 'apollo-client';
+import { ApolloProvider } from 'react-apollo';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import App from './components/app';
-import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const API_KEY = require('../config/key');
+
+const client = new ApolloClient({
+    link: new HttpLink({ uri: API_KEY.GRAPHQL_API_KEY }),
+    cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   , document.querySelector('.container'));

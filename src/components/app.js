@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import UserProfile from './userProfile';
 
 export default class App extends Component {
   render() {
     return (
-      <div>Kittyhawk</div>
+      <div>
+        <UserProfile />
+      </div>
     );
   }
 }
