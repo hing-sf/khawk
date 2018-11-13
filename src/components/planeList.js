@@ -5,15 +5,17 @@ class PlaneList extends Component {
 		let aircraftObj = [];
 
 		this.props.planes.map(el => {
+			const aircraft = el.aircraft;
 			try {
-				if (aircraftObj[el.aircraft.id]) {
-					aircraftObj[el.aircraft.id].count++;
+				if (aircraftObj[aircraft.id]) {
+					aircraftObj[aircraft.id].count++;
 				} else {
-					aircraftObj[el.aircraft.id] = {
-						id: el.aircraft.id,
-						model: el.aircraft.model,
-						manufacturer: el.aircraft.manufacturer,
-						count: 1,
+					aircraftObj[aircraft.id] = {
+						id: aircraft.id,
+						model: aircraft.model,
+						manufacturer: aircraft.manufacturer,
+						duration: el.duration,
+						count: 1
 					};
 				}
 			} catch (err) {
@@ -22,10 +24,11 @@ class PlaneList extends Component {
 		});
 
 		return aircraftObj.map(plane => {
+			console.log(this.props)
 			return (
 				<li key={plane.id} className='collection-list'>
 					Model: {plane.model} | Manufacturer: {plane.manufacturer} | Number of use:{' '}
-					{plane.count}
+					{plane.count} | Duration: {plane.duration}
 				</li>
 			);
 		});
@@ -34,7 +37,6 @@ class PlaneList extends Component {
 	render() {
 		return (
 			<div>
-				<h3>User Plane List</h3>
 				<ul className='collection'>{this.renderPlanelist()}</ul>
 			</div>
 		);
