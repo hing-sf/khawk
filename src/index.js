@@ -4,8 +4,10 @@ import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import App from './components/app';
+import UserProfile from './components/user';
+import UserProfileList from './components/userlist';
 
 const API_KEY = require('../config/key');
 
@@ -16,6 +18,12 @@ const client = new ApolloClient({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-      <App />
+      <BrowserRouter>
+        <div>
+          <Route path="/user" component={UserProfile}/>
+          <Route path="/userlist" component={UserProfileList}/>
+
+        </div>
+      </BrowserRouter>
     </ApolloProvider>
   , document.querySelector('.container'));

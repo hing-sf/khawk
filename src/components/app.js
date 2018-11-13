@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserProfile from './userProfile';
+import UserProfile from './user';
 
 export default class App extends Component {
   render() {
