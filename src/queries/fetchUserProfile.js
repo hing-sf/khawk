@@ -4,6 +4,7 @@ export default gql`
     query GetUserId($id: Int!) {
      account {
       users(id: $id) {
+          id
          	first_name
 	        last_name
   	    	email

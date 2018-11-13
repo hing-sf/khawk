@@ -1,43 +1,28 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import query from '../queries/fetchUserList'
+import { Link } from 'react-router-dom';
 
 class UserProfileList extends Component {
   renderProfile() {
-    return this.props.data.account.users.map( user => {
+    return this.props.data.account.users.map(user => {
       return (
-        <tr key={user.id} className="collection-list">
-          <td> { user.first_name }</td>
-          <td>{ user.first_name }</td>
-          <td>{ user.email }</td>
-        </tr>
+          <Link to={`/user/${user.id}`} key={user.id} href="#!" className="collection-item">
+              {user.first_name} | {user.first_name} | {user.email}
+          </Link>
       );
     });
   }
 
   render() {
     console.log(this.props.data.account)
-    if( this.props.data.loading ) { return <div>Loading ...</div> }
+    if (this.props.data.loading) { return  <div className="progress"><div className="indeterminate"></div></div> }
     return (
-      <div>
-
-      <table className="highlight">
-        <thead>
-          <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-          </tr>
-        </thead>
-
-        <tbody>
+        <div className="collection">
           {this.renderProfile()}
-        </tbody>
-      </table>
-
-      </div>
+        </div>
     );
   }
 }
 
-export default graphql( query )( UserProfileList );
+export default graphql(query)(UserProfileList);

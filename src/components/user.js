@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import fetchUserProfile from '../queries/fetchUserProfile';
 import PlaneList from './PlaneList';
+import { Link } from 'react-router-dom';
 
 class UserProfile extends Component {
 
   render() {
-    if (!this.props.data.account) return <div></div>
+    if (!this.props.data.account) return <div className="progress"><div className="indeterminate"></div></div>
     const userProfile = this.props.data.account.users[0]
     const userTotalFlights = userProfile.flights.length;
 
@@ -16,6 +17,10 @@ class UserProfile extends Component {
 
     return (
       <div>
+
+          <Link to={`/user-in-depth/${userProfile.id}`} href="#!" className="btn-floating btn-large waves-effect waves-light red">
+              <i className="material-icons">add</i>
+          </Link>
         <ul>
           <li>Profile: {userProfile.last_name}, {userProfile.first_name}</li>
           <li>Email: {userProfile.email}</li>
@@ -25,7 +30,6 @@ class UserProfile extends Component {
           <li>List of Aircraft: </li>
         </ul>
         <PlaneList planes={userProfile.flights}/>
-
       </div>
     );
   }
