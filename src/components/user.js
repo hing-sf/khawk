@@ -18,8 +18,8 @@ class UserProfile extends Component {
     return (
       <div>
 
-          <Link to={`/user-in-depth/${userProfile.id}`} href="#!" className="btn-floating btn-large waves-effect waves-light red">
-              <i className="material-icons">add</i>
+          <Link to={`/user-in-depth/${userProfile.id}`} href="#!" className="waves-effect waves-light btn">
+              In Depth Profile
           </Link>
         <ul>
           <li>Profile: {userProfile.last_name}, {userProfile.first_name}</li>
