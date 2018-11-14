@@ -11,7 +11,7 @@ import App from './components/app';
 const API_KEY = ""
 
 const client = new ApolloClient({
-    link: new HttpLink({ uri: API_KEY.GRAPHQL_API_KEY }),
+    link: new HttpLink({ uri: API_KEY }),
     cache: new InMemoryCache(),
 });
 
