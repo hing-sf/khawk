@@ -1,22 +1,52 @@
 ### Kittyhawk Getting Started
+npm install
 
-#### Download file form Git?
+### server
+npm start
 
 
+#### I created a config file which contain the api key, I will email with submission.
 #### graphQL example
 {
- account {
-  id
-  name
-  owner {
-    id
+     account {
+      users {
+        	id
+         	first_name
+	        last_name
+  	    	email
+  			flights {
+          id
+          latitude
+          longitude
+          duration
+          notes
+          pilot {
+            id
+            first_name
+            last_name
+            email
+          }
+          location {
+            id
+            name
+            latitude
+            longitude
+            notes
+          }
+          aircraft {
+            id
+            name
+            manufacturer
+            model
+            serial_number
+          }
+          batteries {
+            id
+            name
+            manufacturer
+            serial_number
+          }
+        }
+      }
+    }
   }
-  users {
-    id
-  }
-  aircraft {
-    id
-    limit
-  }
-} 
-}
