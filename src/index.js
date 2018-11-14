@@ -7,7 +7,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import App from './components/app';
 
-const API_KEY = require('../config/key');
+// const API_KEY = require('../config/key');
+const API_KEY = ""
 
 const client = new ApolloClient({
     link: new HttpLink({ uri: API_KEY.GRAPHQL_API_KEY }),
