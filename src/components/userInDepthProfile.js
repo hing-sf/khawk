@@ -9,6 +9,19 @@ class UserInDepthProfile extends Component {
     const flights = userProfile[0].flights;
 
     return flights.map(flight => {
+console.log(flight)
+      let pilot, aircraft, location, batteries;
+      try {
+        if (flight) {
+          pilot = Object.values(flight.pilot)
+          aircraft = Object.values(flight.aircraft)
+          location = Object.values(flight.location)
+          batteries = Object.values(flight.batteries)
+
+        }
+      } catch (err) {
+        console.log(err)
+      }
 
       return (
         <tr key={flight.id}>
@@ -17,16 +30,22 @@ class UserInDepthProfile extends Component {
           <td>{flight.longitude}</td>
           <td>{flight.duration}</td>
           <td>{flight.notes}</td>
-          {/* <td>{flight.pilot}</td> */}
+          <td>{pilot}</td>
+          <td>{aircraft}</td>
+          <td>{location}</td>
+          <td>{batteries}</td>
         </tr>
       )
     });
   }
 
-  // renderList( items ){
-  //   return items.map( item => {
-  //     return item
-  //   })
+  // renderList( obj ){
+  //   const converted = []
+  //   for(let key in obj){
+  //     converted.push({key:obj[key]})
+  //   }
+  //   console.log(converted)
+  //   return converted;
   // }
 
   render() {
@@ -67,6 +86,10 @@ class UserInDepthProfile extends Component {
               <th>Longitude</th>
               <th>Duration</th>
               <th>Notes</th>
+              <th>Pilot</th>
+              <th>Aircraft</th>
+              <th>Location</th>
+              <th>Batteries</th>
             </tr>
           </thead>
           <tbody>
@@ -74,25 +97,6 @@ class UserInDepthProfile extends Component {
 
           </tbody>
         </table>
-
-        {/* <h4>Pilot</h4>
-        <table className="striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {this.renderList(userProfile.flights, 'polit')}
-            </tr>
-          </tbody>
-        </table> */}
-
-
 
       </div>
     );
